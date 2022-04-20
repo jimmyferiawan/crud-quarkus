@@ -1,0 +1,275 @@
+{
+  "openapi" : "3.0.3",
+  "info" : {
+    "title" : "code-with-quarkus API",
+    "version" : "1.0.0-SNAPSHOT"
+  },
+  "paths" : {
+    "/api/departemen" : {
+      "get" : {
+        "tags" : [ "Departemen Resource" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Departemen Resource" ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Dept"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/api/departemen/{me}" : {
+      "get" : {
+        "tags" : [ "Departemen Resource" ],
+        "parameters" : [ {
+          "name" : "me",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RespDepartemen"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description": "NOT FOUND",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RespDepartemen"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Departemen Resource" ],
+        "parameters" : [ {
+          "name" : "me",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Dept"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Departemen Resource" ],
+        "parameters" : [ {
+          "name" : "me",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/api/employee" : {
+      "get" : {
+        "tags" : [ "Employee Resource" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Employee Resource" ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Emp"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/api/employee/{me}" : {
+      "get" : {
+        "tags" : [ "Employee Resource" ],
+        "parameters" : [ {
+          "name" : "me",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "format" : "int32",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Employee Resource" ],
+        "parameters" : [ {
+          "name" : "me",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "format" : "int32",
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Emp"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Employee Resource" ],
+        "parameters" : [ {
+          "name" : "me",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "format" : "int32",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Departemen" : {
+        "type" : "object",
+        "properties" : {
+          "mDepartemenPk" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "deptCode" : {
+            "type" : "string"
+          },
+          "deptName" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Dept" : {
+        "type" : "object",
+        "properties" : {
+          "deptCode" : {
+            "type" : "string"
+          },
+          "deptName" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Emp" : {
+        "type" : "object",
+        "properties" : {
+          "id_departemen" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "nama" : {
+            "type" : "string"
+          },
+          "npp" : {
+            "type" : "string"
+          },
+          "alamat" : {
+            "type" : "string"
+          },
+          "tgl_gabung" : {
+            "format" : "date",
+            "type" : "string"
+          }
+        }
+      },
+      "RespDepartemen" : {
+        "type" : "object",
+        "properties" : {
+          "error_description" : {
+            "type" : "string"
+          },
+          "error_code" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "success" : {
+            "type" : "boolean"
+          },
+          "code" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/Departemen"
+          }
+        }
+      }
+    }
+  }
+}
